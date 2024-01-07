@@ -12,12 +12,11 @@ function App() {
  const [searchResult, setSearchResult] = useState('');
 
  const handleSearch = async () => {
-    if (searchTerm !== '') {
       const foundWord = initialDictionary.find(entry =>
         entry.word.toLowerCase() === searchTerm.toLowerCase()
       );
-   setSearchResult(foundWord ? foundWord.meaning :<strong> 'Word not found in the dictionary.'</strong>);
-    }
+   setSearchResult(foundWord ? foundWord.meaning :<strong> Word not found in the dictionary.</strong>);
+    
  };
   
  return (
@@ -32,8 +31,8 @@ function App() {
       />
       <button onClick={handleSearch}>Search</button>
       <div>
-        <p><strong>Definition: </strong></p>
-        {searchResult && <p><strong>{searchResult}</strong></p>}
+        <p><strong>Definition:</strong></p>
+        <p><strong>{searchResult}</strong></p>
       </div>
     </div>
  );
