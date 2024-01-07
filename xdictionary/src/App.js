@@ -14,14 +14,15 @@ function App() {
 
   const [searchResult, setSearchResult] = useState('');
 
-  const handleSearch = (e) => {
+  const handleSearch = () => {
     const foundWord = dictionary.find(entry =>
       entry.word.toLowerCase() === searchTerm.toLowerCase()
-    )
+    );
+
     setSearchResult(foundWord ? foundWord.meaning : 'Word not found in the dictionary.');
+  };
 
-  }
-
+  
   return (
     <div>
       <h1>Dictionary App</h1>
