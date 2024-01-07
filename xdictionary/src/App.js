@@ -11,17 +11,28 @@ function App() {
   ]);
 
   const [searchTerm, setSearchTerm] = useState('');
-
+  const [isClicked, setIsClicked] = useState(false)
   const [searchResult, setSearchResult] = useState('');
 
-  const handleSearch = () => {
-    const foundWord = dictionary.find(entry =>
-      entry.word.toLowerCase() === searchTerm.toLowerCase()
-    );
-
-    setSearchResult(foundWord ? foundWord.meaning : 'Word not found in the dictionary.');
+  
+  const handleSearch = async () => {
+    setIsClicked(true);
+    if (searchTerm !== '') {
+      const foundWord = dictionary.find(entry =>
+        entry.word.toLowerCase() === searchTerm.toLowerCase()
+      );
+  
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      setSearchResult(foundWord ? foundWord.meaning : 'Word not found in the dictionary.');
+    }
   };
 
+
+  useEffect(() => {
+    
+    handleSearch();
+  }, [dictionary]);
   
   return (
     <div>
@@ -35,7 +46,7 @@ function App() {
       <button onClick={handleSearch}>Search</button>
       <div>
         <p><strong>Definition: </strong></p>
-        {searchResult && <p>{searchResult}</p>}
+        {isClicked && searchResult && <p>{searchResult}</p>}
       </div>
     </div>
   );
