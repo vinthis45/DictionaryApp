@@ -21,7 +21,7 @@ function App() {
 
       await new Promise(resolve => setTimeout(resolve, 500));
       
-      setSearchResult(foundWord ? foundWord.meaning : 'Word not found in the dictionary.');
+      setSearchResult(foundWord ? foundWord.meaning :<strong> 'Word not found in the dictionary.'</strong>);
     }
  };
 
@@ -42,7 +42,7 @@ function App() {
       <button onClick={handleSearch}>Search</button>
       <div>
         <p><strong>Definition: </strong></p>
-        {isClicked && searchResult && <p>{searchResult}</p>}
+        {isClicked && searchResult && <p><strong>{searchResult}</strong></p>}
       </div>
     </div>
  );
