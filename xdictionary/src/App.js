@@ -31,11 +31,9 @@ function App() {
       />
       <button onClick={handleSearch}>Search</button>
       <div>
+        <p><strong>Definition:</strong></p>
         {searchResult &&
-          <div>
-            <p><strong>Definition:</strong></p>
-            <p><strong>{searchResult}</strong></p>
-          </div>
+          <p><strong>{searchResult}</strong></p>
         }
 
       </div>
