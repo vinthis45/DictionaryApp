@@ -15,29 +15,31 @@ function App() {
     const foundWord = initialDictionary.find(entry =>
       entry.word.toLowerCase() === searchTerm.toLowerCase()
     );
-    setSearchResult(foundWord ? foundWord.meaning : <strong> Word not found in the dictionary.</strong>);
+    setSearchResult(foundWord ? foundWord.meaning : "Word not found in the dictionary.");
 
   };
 
   return (
-    <div>
-      <h1>Dictionary App</h1>
-      <input
-        type="text"
-        name='searchInput'
-        placeholder="Search for a word..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-      <button onClick={handleSearch}>Search</button>
+    <>
       <div>
-        <p><strong>Definition:</strong></p>
+        <h1>Dictionary App</h1>
+        <input
+          type="text"
+          name='searchInput'
+          placeholder="Search for a word..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <button onClick={handleSearch}>Search</button>
+      </div>
+      <div>
+        <strong>Definition:</strong>
         {searchResult &&
           <p><strong>{searchResult}</strong></p>
         }
 
       </div>
-    </div>
+    </>
   );
 }
 
